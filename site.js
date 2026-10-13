@@ -8,6 +8,8 @@
     ["publications", "Publications"], ["events", "Conferences"], ["news", "News"]
   ];
 
+  if (window.BLOG && window.BLOG.length) NAV.push(["blog", "Blog"]);
+
   var ICONS = {
     mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 8l8 5.5L20 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5" fill="#0A66C2"/><text x="12" y="17" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11.5" fill="#fff">in</text></svg>',
@@ -118,5 +120,54 @@
     latest.innerHTML = POSTS.slice(0, 2).map(function (p) {
       return '<article class="item"><h3>' + esc(p.title) + "</h3><p>" + esc(p.short || "") + "</p></article>";
     }).join("") + '<p class="rl"><a href="news.html">All news</a><a href="' + esc(L.linkedinActivity) + '" target="_blank" rel="noopener">My LinkedIn activity</a></p>';
+  }
+
+  /* blog */
+  function inline(t) {
+    t = esc(t);
+    t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+|[\w\-.\/#?=&%;]+)\)/g, function (m, label, u) {
+      var ext = /^https?:/.test(u) ? ' target="_blank" rel="noopener"' : "";
+      return '<a href="' + u + '"' + ext + ">" + label + "</a>";
+    });
+    return t;
+  }
+  function bodyHTML(b) {
+    return String(b || "").trim().split(/\n\s*\n/).map(function (blk) {
+      blk = blk.trim();
+      var m;
+      if ((m = blk.match(/^### (.+)$/))) return "<h3>" + inline(m[1]) + "</h3>";
+      if ((m = blk.match(/^## (.+)$/))) return "<h2>" + inline(m[1]) + "</h2>";
+      if ((m = blk.match(/^!\[([^\]]*)\]\((images\/[^\s)]+)\)$/))) {
+        return '<figure><img src="' + esc(m[2]) + '" alt="' + esc(m[1]) + '" loading="lazy"><figcaption>' + esc(m[1]) + "</figcaption></figure>";
+      }
+      var lines = blk.split("\n");
+      if (lines.every(function (l) { return /^- /.test(l.trim()); })) {
+        return "<ul>" + lines.map(function (l) { return "<li>" + inline(l.trim().slice(2)) + "</li>"; }).join("") + "</ul>";
+      }
+      return "<p>" + lines.map(function (l) { return inline(l.trim()); }).join(" ") + "</p>";
+    }).join("");
+  }
+  var blogEl = document.getElementById("blog-view");
+  if (blogEl) {
+    var posts = window.BLOG || [];
+    var wanted = new URLSearchParams(location.search).get("post");
+    var head = document.getElementById("blog-head");
+    var one = null;
+    posts.forEach(function (p) { if (p.id === wanted) one = p; });
+    if (one) {
+      if (head) head.style.display = "none";
+      document.title = one.title + " · " + S.name;
+      blogEl.innerHTML = '<article class="article"><p class="where">' + esc(one.date) + "</p><h1>" + esc(one.title) + "</h1>" +
+        bodyHTML(one.body) + '<p class="rl"><a href="blog.html">← All posts</a></p></article>';
+    } else if (posts.length) {
+      blogEl.innerHTML = '<section id="posts"><h2>All posts</h2><div>' + posts.map(function (p) {
+        return '<article class="item"><span class="when">' + esc(p.date) + '</span><h3><a href="blog.html?post=' + encodeURIComponent(p.id) + '">' +
+          esc(p.title) + "</a></h3><p>" + esc(p.summary || "") + "</p></article>";
+      }).join("") + "</div></section>";
+    } else {
+      blogEl.innerHTML = '<p class="note">The first blog post is coming soon.</p>';
+    }
   }
 })();

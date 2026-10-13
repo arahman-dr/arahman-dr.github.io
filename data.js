@@ -84,3 +84,33 @@ var POSTS = [
     links: [ { label: "PhotoBrane website", url: "https://photobrane-dn.eu/" } ]
   }
 ];
+
+/* ---------- BLOG (newest first) ----------
+   The Blog link appears in the menu as soon as this list has at least one post.
+   To add a post, copy the block inside this comment, paste it BELOW the comment
+   (before the closing bracket), and change the text.
+
+   Writing tips for "body" (leave a blank line between paragraphs):
+     ## A heading
+     - a bullet point
+     **bold**   *italic*   [link text](https://example.com)
+     ![Short photo description](images/my-photo.jpg)      (upload the photo to the images folder)
+
+  {
+    id: "my-first-post",              // short, lowercase, no spaces: it becomes part of the web address
+    title: "Title of the post",
+    date: "October 2026",
+    summary: "One sentence that appears in the list of posts.",
+    body: `
+First paragraph.
+
+Second paragraph.
+
+## A heading
+
+Another paragraph.
+`
+  },
+*/
+var BLOG = [
+];
