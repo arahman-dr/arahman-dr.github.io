@@ -115,17 +115,21 @@ Another paragraph.
 var BLOG = [
   {
     id: "light-controlled-membranes",
-    title: "Controlling membranes with light: why I joined PhotoBrane",
+    title: "Cleaning membranes with light: why I joined PhotoBrane",
     date: "October 2026",
-    summary: "A short introduction to photo-responsive membranes and to what I study in the PhotoBrane Doctoral Network.",
+    summary: "How light could clean fouling from a membrane surface on demand, and what I study in the PhotoBrane Doctoral Network.",
     body: `
-Membranes are thin barriers that let some molecules pass and hold others back. They sit at the heart of water treatment, desalination and resource recovery. In most cases, the properties of a membrane are fixed when it is made, and they cannot be changed once it is in use.
+Membranes are thin barriers that let some molecules pass and hold others back. They sit at the heart of water treatment, desalination and resource recovery. But in use they face a persistent problem called fouling. Unwanted material such as particles, organic matter and microorganisms builds up on the membrane surface, blocks the pores and lowers performance. Removing it usually means interrupting the process to flush or chemically clean the membrane, and repeated cleaning can shorten the life of the membrane.
 
-I am a doctoral researcher in the PhotoBrane Doctoral Network, funded by the Marie Skłodowska-Curie Actions. My work asks a different question: what if we could change the behaviour of a membrane with light?
+I am a doctoral researcher in the PhotoBrane Doctoral Network, funded by the Marie Skłodowska-Curie Actions. My work focuses on light-triggered cleaning of foulants from the membrane surface. The question is simple: can we clean a membrane on demand, just by switching on light?
+
+[[animation:foulant-cleaning]]
 
 ## The idea
 
-Some molecules, called photoswitches, change their structure when they absorb light of a suitable colour. If such molecules are built into a membrane, light could be used to tune how the membrane separates molecules. The hope is better separation performance, less fouling (the build-up of unwanted material on the membrane surface) and a longer membrane lifetime.
+PhotoBrane aims to develop membranes whose properties can be controlled by light. For cleaning, the goal is a surface that releases or removes foulants when light is applied, instead of relying only on interruptions and chemicals. If it works, the hoped-for gains are better separation performance, less fouling and a longer membrane lifetime.
+
+The animation above is a simplified picture. It shows the effect I am after, not the details of the mechanism.
 
 ## Two fields, one system
 
