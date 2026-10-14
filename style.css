@@ -135,3 +135,43 @@ svg.mem{width:100%;height:auto;display:block}
 .article figure{margin:28px 0}
 .article figure img{max-width:100%;height:auto;border-radius:4px;display:block}
 .article .rl{margin-top:36px}
+
+/* blog animation: light-triggered foulant cleaning */
+:root{--foul:#8A5A3C}
+@media (prefers-color-scheme:dark){:root{--foul:#C58F6B}}
+.article figure.anim{margin:30px 0}
+.article figure.anim figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+svg.fc{width:100%;height:auto;display:block}
+.fc-mem{fill:var(--ink)}
+.fc-pores rect{fill:var(--bg)}
+.fc-light{fill:var(--amber);opacity:0;animation:fcLight 12s linear infinite}
+.fc-lamp{fill:var(--amber);opacity:.35;animation:fcLamp 12s linear infinite}
+.fc-rays line{stroke:var(--amber);stroke-width:2;stroke-linecap:round}
+.fc-glow{stroke:var(--amber);stroke-width:3;opacity:0;animation:fcGlow 12s linear infinite}
+.fc-perm{animation:fcPerm 12s ease-in-out infinite}
+.fc-perm line{stroke:var(--accent);stroke-width:3}
+.fc-perm polygon{fill:var(--accent)}
+.fo{fill:var(--foul);opacity:0}
+.fa{animation:fcA 12s ease-in-out infinite}
+.fb{animation:fcB 12s ease-in-out infinite}
+.fc3{animation:fcC 12s ease-in-out infinite}
+.fc-lab{font:600 13px var(--sans);fill:var(--muted)}
+.fc-st{font:600 14px var(--sans);fill:var(--ink);opacity:0}
+.t1{animation:fcT1 12s linear infinite}
+.t2{animation:fcT2 12s linear infinite}
+.t3{animation:fcT3 12s linear infinite}
+@keyframes fcLight{0%,34%{opacity:0}38%,62%{opacity:.17}68%,100%{opacity:0}}
+@keyframes fcLamp{0%,34%{opacity:.3}38%,62%{opacity:1}68%,100%{opacity:.3}}
+@keyframes fcGlow{0%,34%{opacity:0}38%,62%{opacity:.9}68%,100%{opacity:0}}
+@keyframes fcPerm{0%,4%{opacity:.95}26%,60%{opacity:.25}72%,100%{opacity:.95}}
+@keyframes fcA{0%,2%{opacity:0;transform:translate(0,-70px)}8%{opacity:1;transform:translate(0,0)}44%{opacity:1;transform:translate(0,0)}58%{opacity:1;transform:translate(10px,-26px)}72%{opacity:0;transform:translate(150px,-30px)}100%{opacity:0;transform:translate(0,-70px)}}
+@keyframes fcB{0%,10%{opacity:0;transform:translate(0,-70px)}16%{opacity:1;transform:translate(0,0)}44%{opacity:1;transform:translate(0,0)}58%{opacity:1;transform:translate(10px,-26px)}72%{opacity:0;transform:translate(150px,-30px)}100%{opacity:0;transform:translate(0,-70px)}}
+@keyframes fcC{0%,18%{opacity:0;transform:translate(0,-70px)}24%{opacity:1;transform:translate(0,0)}44%{opacity:1;transform:translate(0,0)}58%{opacity:1;transform:translate(10px,-26px)}72%{opacity:0;transform:translate(150px,-30px)}100%{opacity:0;transform:translate(0,-70px)}}
+@keyframes fcT1{0%,4%{opacity:0}8%,30%{opacity:1}34%,100%{opacity:0}}
+@keyframes fcT2{0%,35%{opacity:0}39%,62%{opacity:1}66%,100%{opacity:0}}
+@keyframes fcT3{0%,70%{opacity:0}74%,96%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .fc-light,.fc-lamp,.fc-glow,.fc-perm,.fa,.fb,.fc3,.t1,.t2,.t3{animation:none}
+  .fc-light{opacity:.17}.fc-lamp{opacity:1}.fc-glow{opacity:.9}.fc-perm{opacity:.25}
+  .fo{opacity:1}.t2{opacity:1}
+}
