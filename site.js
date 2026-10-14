@@ -122,6 +122,30 @@
     }).join("") + '<p class="rl"><a href="news.html">All news</a><a href="' + esc(L.linkedinActivity) + '" target="_blank" rel="noopener">My LinkedIn activity</a></p>';
   }
 
+
+  /* built-in blog animations: use  [[animation:foulant-cleaning]]  on its own line in a post */
+  var ANIMATIONS = {
+    "foulant-cleaning": {
+      caption: "Light-triggered foulant cleaning. Simplified illustration, not to scale; it shows the effect, not a specific mechanism.",
+      svg: '<svg class="fc" viewBox="0 -12 640 302" role="img" aria-label="Animation: foulant builds up on a membrane surface and permeate flow weakens; light is switched on, the foulant lifts off and is carried away, and permeate flow recovers">' +
+        '<polygon class="fc-light" points="300,34 340,34 604,186 36,186"/>' +
+        '<circle class="fc-lamp" cx="320" cy="24" r="10"/>' +
+        '<g class="fc-rays"><line x1="320" y1="4" x2="320" y2="-2"/><line x1="300" y1="10" x2="295" y2="5"/><line x1="340" y1="10" x2="345" y2="5"/></g>' +
+        '<rect class="fc-mem" x="40" y="190" width="560" height="26" rx="4"/>' +
+        '<g class="fc-pores"><rect x="80" y="190" width="12" height="26"/><rect x="140" y="190" width="12" height="26"/><rect x="200" y="190" width="12" height="26"/><rect x="260" y="190" width="12" height="26"/><rect x="320" y="190" width="12" height="26"/><rect x="380" y="190" width="12" height="26"/><rect x="440" y="190" width="12" height="26"/><rect x="500" y="190" width="12" height="26"/><rect x="560" y="190" width="12" height="26"/></g>' +
+        '<line class="fc-glow" x1="40" y1="189" x2="600" y2="189"/>' +
+        '<g class="fc-perm"><g><line x1="86" y1="224" x2="86" y2="254"/><polygon points="81,252 86,262 91,252"/></g><g><line x1="146" y1="224" x2="146" y2="254"/><polygon points="141,252 146,262 151,252"/></g><g><line x1="206" y1="224" x2="206" y2="254"/><polygon points="201,252 206,262 211,252"/></g><g><line x1="266" y1="224" x2="266" y2="254"/><polygon points="261,252 266,262 271,252"/></g><g><line x1="326" y1="224" x2="326" y2="254"/><polygon points="321,252 326,262 331,252"/></g><g><line x1="386" y1="224" x2="386" y2="254"/><polygon points="381,252 386,262 391,252"/></g><g><line x1="446" y1="224" x2="446" y2="254"/><polygon points="441,252 446,262 451,252"/></g><g><line x1="506" y1="224" x2="506" y2="254"/><polygon points="501,252 506,262 511,252"/></g><g><line x1="566" y1="224" x2="566" y2="254"/><polygon points="561,252 566,262 571,252"/></g></g>' +
+        '<circle class="fo fa" cx="95" cy="181" r="9"/><circle class="fo fa" cx="255" cy="180" r="10"/><circle class="fo fa" cx="415" cy="182" r="8"/>' +
+        '<circle class="fo fb" cx="175" cy="182" r="8"/><circle class="fo fb" cx="335" cy="181" r="9"/><circle class="fo fb" cx="495" cy="180" r="10"/>' +
+        '<circle class="fo fc3" cx="135" cy="183" r="7"/><circle class="fo fc3" cx="295" cy="182" r="8"/><circle class="fo fc3" cx="455" cy="183" r="7"/><circle class="fo fc3" cx="555" cy="181" r="9"/>' +
+        '<text class="fc-lab" x="44" y="62">Feed</text><text class="fc-lab" x="44" y="282">Permeate</text>' +
+        '<text class="fc-st t1" x="600" y="62" text-anchor="end">Foulant builds up, flow drops</text>' +
+        '<text class="fc-st t2" x="600" y="62" text-anchor="end">Light on: foulant is released</text>' +
+        '<text class="fc-st t3" x="600" y="62" text-anchor="end">Clean surface, flow restored</text>' +
+        '</svg>'
+    }
+  };
+
   /* blog */
   function inline(t) {
     t = esc(t);
@@ -141,6 +165,9 @@
       if ((m = blk.match(/^## (.+)$/))) return "<h2>" + inline(m[1]) + "</h2>";
       if ((m = blk.match(/^!\[([^\]]*)\]\((images\/[^\s)]+)\)$/))) {
         return '<figure><img src="' + esc(m[2]) + '" alt="' + esc(m[1]) + '" loading="lazy"><figcaption>' + esc(m[1]) + "</figcaption></figure>";
+      }
+      if ((m = blk.match(/^\[\[animation:([\w-]+)\]\]$/)) && ANIMATIONS[m[1]]) {
+        return '<figure class="anim">' + ANIMATIONS[m[1]].svg + "<figcaption>" + esc(ANIMATIONS[m[1]].caption) + "</figcaption></figure>";
       }
       var lines = blk.split("\n");
       if (lines.every(function (l) { return /^- /.test(l.trim()); })) {
