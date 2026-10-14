@@ -113,4 +113,35 @@ Another paragraph.
   },
 */
 var BLOG = [
+  {
+    id: "light-controlled-membranes",
+    title: "Controlling membranes with light: why I joined PhotoBrane",
+    date: "October 2026",
+    summary: "A short introduction to photo-responsive membranes and to what I study in the PhotoBrane Doctoral Network.",
+    body: `
+Membranes are thin barriers that let some molecules pass and hold others back. They sit at the heart of water treatment, desalination and resource recovery. In most cases, the properties of a membrane are fixed when it is made, and they cannot be changed once it is in use.
+
+I am a doctoral researcher in the PhotoBrane Doctoral Network, funded by the Marie Skłodowska-Curie Actions. My work asks a different question: what if we could change the behaviour of a membrane with light?
+
+## The idea
+
+Some molecules, called photoswitches, change their structure when they absorb light of a suitable colour. If such molecules are built into a membrane, light could be used to tune how the membrane separates molecules. The hope is better separation performance, less fouling (the build-up of unwanted material on the membrane surface) and a longer membrane lifetime.
+
+## Two fields, one system
+
+This topic sits between two worlds. Membrane science asks how a material separates molecules. Photochemistry and photophysics ask what happens to a molecule after it absorbs light. To connect the two, I study the materials with spectroscopy, from UV–Vis to transient absorption, which follows the short-lived states a molecule goes through after it is excited by light.
+
+What interests me most is the link between three things: the structure of the material, the photophysical processes inside it and the way the membrane works in the end.
+
+## Where I come from
+
+My background is in materials engineering, followed by the Erasmus Mundus Master's in Membrane Engineering for Sustainable Development, which took me through the University of Twente, Universidad de Zaragoza and Université de Montpellier. This path developed my interest in membrane materials, in separation technologies and in how advanced materials can help with environmental and energy challenges.
+
+## The network
+
+PhotoBrane brings together experts in membrane technology, dye chemistry, photoswitches and computational chemistry from across Europe and beyond. As a doctoral researcher I receive training in areas such as molecular modeling and the synthesis of photoswitchable building blocks, and I work with researchers from very different fields. I am also the PhD student representative of the network, so I help the doctoral researchers stay in touch with each other.
+
+I will use this blog to share what I learn along the way, from lab work to conferences and summer schools. If you work on membranes, photochemistry or a related topic and would like to talk, you can reach me through the icons at the top of the page.
+`
+  }
 ];
