@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Edit my website</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%2317756E' stroke-width='4'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%239B2C8C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/editor.css">
+<script src="assets/boot.js"></script>
+</head>
+<body class="ed">
+<header class="ed-top">
+  <div>
+    <h1>Edit my website</h1>
+    <p>Change anything below, then download the file and upload it to GitHub. Your edits are kept in this browser until you do.</p>
+  </div>
+  <div class="ed-actions">
+    <button type="button" class="btn" id="preview">Preview the site</button>
+    <button type="button" class="btn" id="copy">Copy file text</button>
+    <button type="button" class="btn primary" id="download">Download content.js</button>
+  </div>
+</header>
+<div id="ed-msg" role="status" aria-live="polite"></div>
+<details class="ed-help" id="help">
+  <summary>How to put your changes online</summary>
+  <ol>
+    <li>Click <b>Download content.js</b>.</li>
+    <li>Open your repository on GitHub, <a href="https://github.com/arahman-dr/arahman-dr.github.io" target="_blank" rel="noopener">arahman-dr/arahman-dr.github.io</a>.</li>
+    <li>Click <b>Add file</b>, then <b>Upload files</b>, and drop the downloaded content.js there. GitHub replaces the old file.</li>
+    <li>Click <b>Commit changes</b>. The site updates within a minute or two.</li>
+  </ol>
+  <p>Photos: upload them to the <b>images</b> folder the same way, then write their path here, for example <code>images/girona-1.jpg</code>.</p>
+  <p>Another way: open content.js on GitHub, click the pencil icon, select all the text, paste what <b>Copy file text</b> gave you, and commit.</p>
+</details>
+<div class="ed-grid">
+  <nav class="ed-nav" id="ed-nav" aria-label="Sections"></nav>
+  <main id="ed-main"></main>
+</div>
+<script src="content.js"></script>
+<script src="assets/editor.js"></script>
+</body>
+</html>
