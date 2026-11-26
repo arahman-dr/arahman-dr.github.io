@@ -712,7 +712,7 @@
         '<circle class="halo" r="9"/><circle class="dot" r="3.6"/><text class="lbl" x="7" y="3.5">' + esc(p.city) + "</text></g></g>";
     }).join("");
     var views = '<div class="filters" role="group" aria-label="Zoom the map">' +
-      [["world", "World"], ["europe", "Europe"], ["asia", "Asia"]].map(function (v, i) {
+      [["world", "World"], ["europe", "Europe"], ["asia", "Middle East and Asia"]].map(function (v, i) {
         return '<button type="button" data-view="' + v[0] + '" aria-pressed="' + (i === 0) + '">' + v[1] + "</button>";
       }).join("") + "</div>";
     return views + '<svg class="world" id="world" viewBox="0 0 ' + M.w + " " + M.h + '" role="img" aria-label="World map. Visited countries are shaded and each city is a dot.">' +
